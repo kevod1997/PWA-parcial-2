@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Taskmgr</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen p-6">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-xl font-bold">Configuración</h1>
+                <button id="backButton" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Selección de idioma -->
+                <div>
+                    <label for="voiceSelect" class="block text-sm font-medium text-gray-700 mb-2">
+                        Seleccionar idioma
+                    </label>
+                    <select id="voiceSelect" class="w-full p-2 border rounded-md">
+                        <!-- Las voces se cargarán dinámicamente -->
+                    </select>
+                </div>
+
+                <!-- Control de velocidad -->
+                <div>
+                    <label for="rateRange" class="block text-sm font-medium text-gray-700 mb-2">
+                        Velocidad de audio
+                    </label>
+                    <input type="range" 
+                           id="rateRange" 
+                           min="-0.9" 
+                           max="1.2" 
+                           step="0.1" 
+                           value="1"
+                           class="w-full">
+                    <div class="flex justify-between text-sm text-gray-500 mt-1">
+                        <span>-0.9</span>
+                        <span>1.2</span>
+                    </div>
+                </div>
+
+                <!-- Valor actual -->
+                <div class="text-center">
+                    <span class="text-sm font-medium text-gray-700">
+                        Velocidad actual: <span id="currentRate">1</span>
+                    </span>
+                </div>
+
+                <!-- Botones -->
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button id="cancelButton" 
+                            class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300">
+                        Cancelar
+                    </button>
+                    <button id="saveButton" 
+                            class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast para notificaciones -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg hidden">
+        Configuración guardada exitosamente
+    </div>
+
+    <script src="configuracion.js" type="module"></script>
+</body>
+</html>

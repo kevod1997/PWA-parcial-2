@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taskmgr - Gestión de Tareas</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Para los íconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between">
+          <div class="flex space-x-7">
+            <!-- Logo -->
+            <div class="flex items-center py-4">
+              <span class="font-semibold text-gray-800 text-lg">Taskmgr</span>
+            </div>
+          </div>
+          <!-- Menú principal -->
+          <div class="hidden md:flex items-center space-x-1">
+            <a
+              href="nueva-tarea.html"
+              class="py-4 px-2 text-gray-500 hover:text-gray-900"
+              >Nueva Tarea</a
+            >
+
+            <a
+              href="configuracion.html"
+              class="py-4 px-2 text-gray-500 hover:text-gray-900"
+              >Configuración</a
+            >
+          </div>
+          <!-- Botón del menú móvil -->
+          <div class="md:hidden flex items-center">
+            <button class="outline-none mobile-menu-button">
+              <svg
+                class="w-6 h-6 text-gray-500 hover:text-gray-900"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Menú móvil -->
+      <div class="hidden mobile-menu md:hidden">
+        <ul class="pt-4 pb-3">
+          <li>
+            <a
+              href="nueva-tarea.html"
+              class="block pl-4 text-sm py-2 px-2 text-gray-500 hover:bg-gray-200"
+              >Nueva Tarea</a
+            >
+          </li>
+          <li>
+            <a
+              href="configuracion.html"
+              class="block pl-4 text-sm py-2 px-2 text-gray-500 hover:bg-gray-200"
+              >Configuración</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mx-auto px-4 mt-8">
+      <div id="tasks-container" class="flex flex-col space-y-4">
+        <!-- Las cards se insertarán aquí dinámicamente -->
+      </div>
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div
+      id="deleteModal"
+      class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50"
+    >
+      <div
+        class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white"
+      >
+        <div class="flex flex-col space-y-4">
+          <!-- Título con ícono de advertencia -->
+          <div class="flex items-center space-x-2">
+            <svg
+              class="w-6 h-6 text-yellow-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              ></path>
+            </svg>
+            <h3 class="text-lg font-medium">Confirmar eliminación</h3>
+          </div>
+
+          <p class="text-gray-600">
+            ¿Estás seguro que deseas eliminar esta tarea?
+          </p>
+
+          <p id="deleteTaskTitle" class="font-medium text-gray-800"></p>
+
+          <!-- Botones -->
+          <div class="flex justify-end space-x-3">
+            <button
+              id="cancelDelete"
+              class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+            >
+              Cancelar
+            </button>
+            <button
+              id="confirmDelete"
+              class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+            >
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
